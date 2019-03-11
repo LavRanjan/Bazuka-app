@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Login
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <h4 text-center margin-top>Welcome to SignIn</h4>
+    <form #loginForm="ngForm" (ngSubmit)="signIn()" autocomplete="off">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-input placeholder="Email" name="username" id="loginField"
+                         type="text" required [(ngModel)]="username" #email></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input placeholder="Password" name="password" id="passwordField"
+                         type="password" required [(ngModel)]="password"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          <button ion-button class="submit-btn" full type="submit"
+                  [disabled]="!loginForm.form.valid">Login
+          </button>
+          <p text-center>don't have acoount? Create One !</p>
+          <button ion-button color="secondary" full type="button" [navPush]="registerPage">SignUp</button>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-row>
+      <ion-col text-right>
+        <a ion-a [navPush]="forgotpasswordpage" >Forgot password</a>
+      </ion-col>
+    </ion-row>
+  </ion-content>
